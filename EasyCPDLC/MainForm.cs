@@ -114,7 +114,7 @@ namespace EasyCPDLC
             }
         }
 
-        public static int SavedCID
+        public static int SavedVID
         {
             get
             {
@@ -334,8 +334,8 @@ namespace EasyCPDLC
         {
             try
             {
-                var client = new GitHubClient(new ProductHeaderValue("EasyCPDLC"));
-                var releases = await client.Repository.Release.GetAll("josh-seagrave", "EasyCPDLC");
+                var client = new GitHubClient(new ProductHeaderValue("EasyCPDLC_IVAO"));
+                var releases = await client.Repository.Release.GetAll("EarlyBirdREAL", "EasyCPDLC_IVAO");
                 var latest = releases[0];
                 string latestVersion = latest.TagName.Replace("cpdlc", "");
                 if (latestVersion != System.Windows.Forms.Application.ProductVersion)
@@ -510,7 +510,7 @@ namespace EasyCPDLC
 
             Logger.Info("Login Form Displayed");
 
-            DataEntry dataEntry = new(SavedHoppieCode == String.Empty ? null : SavedHoppieCode, SavedCID == new int() ? null : global::EasyCPDLC.MainForm.SavedCID);
+            DataEntry dataEntry = new(SavedHoppieCode == String.Empty ? null : SavedHoppieCode, SavedVID == new int() ? null : global::EasyCPDLC.MainForm.SavedVID);
 
             if (dataEntry.ShowDialog(this) == DialogResult.OK)
             {
@@ -520,11 +520,11 @@ namespace EasyCPDLC
                 {
                     Logger.Info("REMEMBER ME: TRUE. REGISTRY SET.");
                     SavedHoppieCode = logonCode;
-                    SavedCID = cid;
+                    SavedVID = cid;
                 }
                 else
                 {
-                    SavedCID = new int();
+                    SavedVID = new int();
                     SavedHoppieCode = String.Empty;
                 }
             }

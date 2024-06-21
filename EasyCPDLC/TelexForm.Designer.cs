@@ -27,220 +27,222 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelexForm));
-            this.messageFormatPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.clearButton = new System.Windows.Forms.Button();
-            this.sendButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.freeTextButton = new System.Windows.Forms.Button();
-            this.metarButton = new System.Windows.Forms.Button();
-            this.atisButton = new System.Windows.Forms.Button();
-            this.radioContainer = new System.Windows.Forms.Panel();
-            this.atisRadioButton = new System.Windows.Forms.RadioButton();
-            this.metarRadioButton = new System.Windows.Forms.RadioButton();
-            this.freeTextRadioButton = new System.Windows.Forms.RadioButton();
-            this.radioContainer.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // messageFormatPanel
-            // 
-            this.messageFormatPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.messageFormatPanel.AutoScroll = true;
-            this.messageFormatPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.messageFormatPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.messageFormatPanel.Location = new System.Drawing.Point(14, 55);
-            this.messageFormatPanel.Margin = new System.Windows.Forms.Padding(5);
-            this.messageFormatPanel.Name = "messageFormatPanel";
-            this.messageFormatPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 30);
-            this.messageFormatPanel.Size = new System.Drawing.Size(504, 127);
-            this.messageFormatPanel.TabIndex = 3;
-            // 
-            // clearButton
-            // 
-            this.clearButton.AccessibleDescription = "Clear Telex";
-            this.clearButton.AccessibleName = "Clear";
-            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearButton.Font = new System.Drawing.Font(MainForm.fonts.Families[1], 12F, System.Drawing.FontStyle.Bold);
-            this.clearButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.clearButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.clearButton.Location = new System.Drawing.Point(304, 190);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(104, 37);
-            this.clearButton.TabIndex = 4;
-            this.clearButton.Text = "CLEAR";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ResetPanel);
-            // 
-            // sendButton
-            // 
-            this.sendButton.AccessibleDescription = "Send Telex Message";
-            this.sendButton.AccessibleName = "Send";
-            this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendButton.Font = new System.Drawing.Font(MainForm.fonts.Families[1], 12F, System.Drawing.FontStyle.Bold);
-            this.sendButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.sendButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.sendButton.Location = new System.Drawing.Point(414, 190);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(104, 37);
-            this.sendButton.TabIndex = 5;
-            this.sendButton.Text = "SEND";
-            this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.SendButton_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.AccessibleDescription = "Exit Telex Form";
-            this.exitButton.AccessibleName = "Exit";
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font(MainForm.fonts.Families[1], 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.exitButton.Location = new System.Drawing.Point(509, 0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(24, 24);
-            this.exitButton.TabIndex = 6;
-            this.exitButton.Text = "X";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font(MainForm.fonts.Families[1], 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.titleLabel.Location = new System.Drawing.Point(329, 9);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(186, 41);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "EasyCPDLC";
-            this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WindowDrag);
-            // 
-            // freeTextButton
-            // 
-            this.freeTextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.freeTextButton.Font = new System.Drawing.Font(MainForm.fonts.Families[1], 12F, System.Drawing.FontStyle.Bold);
-            this.freeTextButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.freeTextButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.freeTextButton.Location = new System.Drawing.Point(14, 10);
-            this.freeTextButton.Name = "freeTextButton";
-            this.freeTextButton.Size = new System.Drawing.Size(100, 37);
-            this.freeTextButton.TabIndex = 0;
-            this.freeTextButton.Text = "FREE TEXT";
-            this.freeTextButton.UseVisualStyleBackColor = true;
-            this.freeTextButton.Click += new System.EventHandler(this.FreeTextButton_Click);
-            // 
-            // metarButton
-            // 
-            this.metarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metarButton.Font = new System.Drawing.Font(MainForm.fonts.Families[1], 12F, System.Drawing.FontStyle.Bold);
-            this.metarButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.metarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metarButton.Location = new System.Drawing.Point(120, 10);
-            this.metarButton.Name = "metarButton";
-            this.metarButton.Size = new System.Drawing.Size(100, 37);
-            this.metarButton.TabIndex = 1;
-            this.metarButton.Text = "METAR";
-            this.metarButton.UseVisualStyleBackColor = true;
-            this.metarButton.Click += new System.EventHandler(this.MetarButton_Click);
-            // 
-            // atisButton
-            // 
-            this.atisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.atisButton.Font = new System.Drawing.Font(MainForm.fonts.Families[1], 12F, System.Drawing.FontStyle.Bold);
-            this.atisButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.atisButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.atisButton.Location = new System.Drawing.Point(226, 10);
-            this.atisButton.Name = "atisButton";
-            this.atisButton.Size = new System.Drawing.Size(100, 37);
-            this.atisButton.TabIndex = 2;
-            this.atisButton.Text = "ATIS";
-            this.atisButton.UseVisualStyleBackColor = true;
-            this.atisButton.Click += new System.EventHandler(this.AtisButton_Click);
-            // 
-            // radioContainer
-            // 
-            this.radioContainer.Controls.Add(this.atisRadioButton);
-            this.radioContainer.Controls.Add(this.metarRadioButton);
-            this.radioContainer.Controls.Add(this.freeTextRadioButton);
-            this.radioContainer.Location = new System.Drawing.Point(198, 190);
-            this.radioContainer.Name = "radioContainer";
-            this.radioContainer.Size = new System.Drawing.Size(62, 26);
-            this.radioContainer.TabIndex = 15;
-            this.radioContainer.Visible = false;
-            // 
-            // atisRadioButton
-            // 
-            this.atisRadioButton.AutoSize = true;
-            this.atisRadioButton.Location = new System.Drawing.Point(44, 7);
-            this.atisRadioButton.Name = "atisRadioButton";
-            this.atisRadioButton.Size = new System.Drawing.Size(14, 13);
-            this.atisRadioButton.TabIndex = 2;
-            this.atisRadioButton.TabStop = true;
-            this.atisRadioButton.UseVisualStyleBackColor = true;
-            this.atisRadioButton.Visible = false;
-            // 
-            // metarRadioButton
-            // 
-            this.metarRadioButton.AutoSize = true;
-            this.metarRadioButton.Location = new System.Drawing.Point(24, 7);
-            this.metarRadioButton.Name = "metarRadioButton";
-            this.metarRadioButton.Size = new System.Drawing.Size(14, 13);
-            this.metarRadioButton.TabIndex = 1;
-            this.metarRadioButton.TabStop = true;
-            this.metarRadioButton.UseVisualStyleBackColor = true;
-            this.metarRadioButton.Visible = false;
-            // 
-            // freeTextRadioButton
-            // 
-            this.freeTextRadioButton.AutoSize = true;
-            this.freeTextRadioButton.Location = new System.Drawing.Point(4, 7);
-            this.freeTextRadioButton.Name = "freeTextRadioButton";
-            this.freeTextRadioButton.Size = new System.Drawing.Size(14, 13);
-            this.freeTextRadioButton.TabIndex = 0;
-            this.freeTextRadioButton.TabStop = true;
-            this.freeTextRadioButton.UseVisualStyleBackColor = true;
-            this.freeTextRadioButton.Visible = false;
-            // 
-            // TelexForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(532, 241);
-            this.Controls.Add(this.radioContainer);
-            this.Controls.Add(this.atisButton);
-            this.Controls.Add(this.metarButton);
-            this.Controls.Add(this.freeTextButton);
-            this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.sendButton);
-            this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.messageFormatPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(532, 241);
-            this.Name = "TelexForm";
-            this.Text = "TelexForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelexForm_FormClosing);
-            this.Load += new System.EventHandler(this.ReloadPanel);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WindowDrag);
-            this.radioContainer.ResumeLayout(false);
-            this.radioContainer.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
-        }
+{
+    System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelexForm));
+    messageFormatPanel = new System.Windows.Forms.FlowLayoutPanel();
+    clearButton = new System.Windows.Forms.Button();
+    sendButton = new System.Windows.Forms.Button();
+    exitButton = new System.Windows.Forms.Button();
+    freeTextButton = new System.Windows.Forms.Button();
+    metarButton = new System.Windows.Forms.Button();
+    atisButton = new System.Windows.Forms.Button();
+    radioContainer = new System.Windows.Forms.Panel();
+    atisRadioButton = new System.Windows.Forms.RadioButton();
+    metarRadioButton = new System.Windows.Forms.RadioButton();
+    freeTextRadioButton = new System.Windows.Forms.RadioButton();
+    titleLabel = new System.Windows.Forms.Label();
+    radioContainer.SuspendLayout();
+    SuspendLayout();
+    // 
+    // messageFormatPanel
+    // 
+    messageFormatPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+    messageFormatPanel.AutoScroll = true;
+    messageFormatPanel.BackColor = System.Drawing.Color.FromArgb(5, 5, 5);
+    messageFormatPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+    messageFormatPanel.Location = new System.Drawing.Point(16, 63);
+    messageFormatPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+    messageFormatPanel.Name = "messageFormatPanel";
+    messageFormatPanel.Padding = new System.Windows.Forms.Padding(12, 0, 0, 35);
+    messageFormatPanel.Size = new System.Drawing.Size(588, 146);
+    messageFormatPanel.TabIndex = 3;
+    // 
+    // clearButton
+    // 
+    clearButton.AccessibleDescription = "Clear Telex";
+    clearButton.AccessibleName = "Clear";
+    clearButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+    clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+    clearButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+    clearButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+    clearButton.Location = new System.Drawing.Point(355, 219);
+    clearButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    clearButton.Name = "clearButton";
+    clearButton.Size = new System.Drawing.Size(121, 43);
+    clearButton.TabIndex = 4;
+    clearButton.Text = "CLEAR";
+    clearButton.UseVisualStyleBackColor = true;
+    clearButton.Click += ResetPanel;
+    // 
+    // sendButton
+    // 
+    sendButton.AccessibleDescription = "Send Telex Message";
+    sendButton.AccessibleName = "Send";
+    sendButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+    sendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+    sendButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+    sendButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+    sendButton.Location = new System.Drawing.Point(483, 219);
+    sendButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    sendButton.Name = "sendButton";
+    sendButton.Size = new System.Drawing.Size(121, 43);
+    sendButton.TabIndex = 5;
+    sendButton.Text = "SEND";
+    sendButton.UseVisualStyleBackColor = true;
+    sendButton.Click += SendButton_Click;
+    // 
+    // exitButton
+    // 
+    exitButton.AccessibleDescription = "Exit Telex Form";
+    exitButton.AccessibleName = "Exit";
+    exitButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+    exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+    exitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(28, 28, 28);
+    exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+    exitButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+    exitButton.Location = new System.Drawing.Point(594, 0);
+    exitButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    exitButton.Name = "exitButton";
+    exitButton.Size = new System.Drawing.Size(28, 28);
+    exitButton.TabIndex = 6;
+    exitButton.Text = "X";
+    exitButton.UseVisualStyleBackColor = true;
+    exitButton.Click += ExitButton_Click;
+    // 
+    // freeTextButton
+    // 
+    freeTextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+    freeTextButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+    freeTextButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+    freeTextButton.Location = new System.Drawing.Point(16, 12);
+    freeTextButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    freeTextButton.Name = "freeTextButton";
+    freeTextButton.Size = new System.Drawing.Size(117, 43);
+    freeTextButton.TabIndex = 0;
+    freeTextButton.Text = "FREE TEXT";
+    freeTextButton.UseVisualStyleBackColor = true;
+    freeTextButton.Click += FreeTextButton_Click;
+    // 
+    // metarButton
+    // 
+    metarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+    metarButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+    metarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+    metarButton.Location = new System.Drawing.Point(140, 12);
+    metarButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    metarButton.Name = "metarButton";
+    metarButton.Size = new System.Drawing.Size(117, 43);
+    metarButton.TabIndex = 1;
+    metarButton.Text = "METAR";
+    metarButton.UseVisualStyleBackColor = true;
+    metarButton.Click += MetarButton_Click;
+    // 
+    // atisButton
+    // 
+    atisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+    atisButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+    atisButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+    atisButton.Location = new System.Drawing.Point(264, 12);
+    atisButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    atisButton.Name = "atisButton";
+    atisButton.Size = new System.Drawing.Size(117, 43);
+    atisButton.TabIndex = 2;
+    atisButton.Text = "ATIS";
+    atisButton.UseVisualStyleBackColor = true;
+    atisButton.Click += AtisButton_Click;
+    // 
+    // radioContainer
+    // 
+    radioContainer.Controls.Add(atisRadioButton);
+    radioContainer.Controls.Add(metarRadioButton);
+    radioContainer.Controls.Add(freeTextRadioButton);
+    radioContainer.Location = new System.Drawing.Point(231, 219);
+    radioContainer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    radioContainer.Name = "radioContainer";
+    radioContainer.Size = new System.Drawing.Size(72, 30);
+    radioContainer.TabIndex = 15;
+    radioContainer.Visible = false;
+    // 
+    // atisRadioButton
+    // 
+    atisRadioButton.AutoSize = true;
+    atisRadioButton.Location = new System.Drawing.Point(51, 8);
+    atisRadioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    atisRadioButton.Name = "atisRadioButton";
+    atisRadioButton.Size = new System.Drawing.Size(14, 13);
+    atisRadioButton.TabIndex = 2;
+    atisRadioButton.TabStop = true;
+    atisRadioButton.UseVisualStyleBackColor = true;
+    atisRadioButton.Visible = false;
+    // 
+    // metarRadioButton
+    // 
+    metarRadioButton.AutoSize = true;
+    metarRadioButton.Location = new System.Drawing.Point(28, 8);
+    metarRadioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    metarRadioButton.Name = "metarRadioButton";
+    metarRadioButton.Size = new System.Drawing.Size(14, 13);
+    metarRadioButton.TabIndex = 1;
+    metarRadioButton.TabStop = true;
+    metarRadioButton.UseVisualStyleBackColor = true;
+    metarRadioButton.Visible = false;
+    // 
+    // freeTextRadioButton
+    // 
+    freeTextRadioButton.AutoSize = true;
+    freeTextRadioButton.Location = new System.Drawing.Point(5, 8);
+    freeTextRadioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    freeTextRadioButton.Name = "freeTextRadioButton";
+    freeTextRadioButton.Size = new System.Drawing.Size(14, 13);
+    freeTextRadioButton.TabIndex = 0;
+    freeTextRadioButton.TabStop = true;
+    freeTextRadioButton.UseVisualStyleBackColor = true;
+    freeTextRadioButton.Visible = false;
+    // 
+    // titleLabel
+    // 
+    titleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+    titleLabel.AutoSize = true;
+    titleLabel.Font = new System.Drawing.Font("Oxygen", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+    titleLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+    titleLabel.Location = new System.Drawing.Point(385, 12);
+    titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+    titleLabel.Name = "titleLabel";
+    titleLabel.Size = new System.Drawing.Size(219, 44);
+    titleLabel.TabIndex = 17;
+    titleLabel.Text = "IVAO CPDLC";
+    // 
+    // TelexForm
+    // 
+    AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+    AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+    AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+    BackColor = System.Drawing.Color.FromArgb(28, 27, 31);
+    BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+    ClientSize = new System.Drawing.Size(621, 278);
+    Controls.Add(titleLabel);
+    Controls.Add(radioContainer);
+    Controls.Add(atisButton);
+    Controls.Add(metarButton);
+    Controls.Add(freeTextButton);
+    Controls.Add(exitButton);
+    Controls.Add(sendButton);
+    Controls.Add(clearButton);
+    Controls.Add(messageFormatPanel);
+    FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+    Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+    Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+    MinimumSize = new System.Drawing.Size(621, 278);
+    Name = "TelexForm";
+    Text = "TelexForm";
+    FormClosing += TelexForm_FormClosing;
+    Load += ReloadPanel;
+    MouseDown += WindowDrag;
+    radioContainer.ResumeLayout(false);
+    radioContainer.PerformLayout();
+    ResumeLayout(false);
+    PerformLayout();
+}
 
         #endregion
         private System.Windows.Forms.FlowLayoutPanel messageFormatPanel;
