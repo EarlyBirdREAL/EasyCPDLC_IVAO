@@ -81,9 +81,6 @@
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Resources\B612Mono-Bold.ttf" />
-    <EmbeddedResource Include="Resources\Notification.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Oxygen-Regular.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>

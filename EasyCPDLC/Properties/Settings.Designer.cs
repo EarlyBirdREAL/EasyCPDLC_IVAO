@@ -146,12 +146,12 @@ namespace EasyCPDLC.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int CID {
+        public int VID {
             get {
-                return ((int)(this["CID"]));
+                return ((int)(this["VID"]));
             }
             set {
-                this["CID"] = value;
+                this["VID"] = value;
             }
         }
         

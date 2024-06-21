@@ -278,11 +278,11 @@ namespace EasyCPDLC
             {
                 if (parent.fsuipc.groundspeed < 100)
                 {
-                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userVATSIMData.flight_plan.departure, 4));
+                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userIVAOData.flightPlan.departureId, 4));
                 }
                 else
                 {
-                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userVATSIMData.flight_plan.arrival, 4));
+                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userIVAOData.flightPlan.arrivalId, 4));
                 }
             }
             catch
@@ -302,11 +302,11 @@ namespace EasyCPDLC
             {
                 if (parent.fsuipc.groundspeed < 100)
                 {
-                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userVATSIMData.flight_plan.departure, 4));
+                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userIVAOData.flightPlan.departureId, 4));
                 }
                 else
                 {
-                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userVATSIMData.flight_plan.arrival, 4));
+                    messageFormatPanel.Controls.Add(CreateTextBox(parent.userIVAOData.flightPlan.arrivalId, 4));
                 }
             }
             catch

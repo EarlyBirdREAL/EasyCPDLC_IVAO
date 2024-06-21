@@ -32,9 +32,9 @@ namespace EasyCPDLC
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool ReleaseCapture();
         public string HoppieLogonCode { get; set; }
-        public int VatsimCID { get; set; }
+        public int IVAOVid { get; set; }
         public bool Remember { get; set; }
-        public DataEntry(object _hoppieLogonCode = null, object _vatsimCID = null)
+        public DataEntry(object _hoppieLogonCode = null, object _ivaovid = null)
         {
             InitializeComponent();
 
@@ -49,9 +49,9 @@ namespace EasyCPDLC
                 {
                     throw new Exception();
                 }
-                if (_vatsimCID is not null)
+                if (_ivaovid is not null)
                 {
-                    vatsimCIDTextBox.Text = _vatsimCID.ToString();
+                    ivaoVIDTextBox.Text = _ivaovid.ToString();
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace EasyCPDLC
             catch (Exception)
             {
                 hoppieCodeTextBox.Text = "";
-                vatsimCIDTextBox.Text = "";
+                ivaoVIDTextBox.Text = "";
                 rememberCheckBox.Checked = false;
             }
         }
@@ -78,7 +78,7 @@ namespace EasyCPDLC
             try
             {
                 HoppieLogonCode = hoppieCodeTextBox.Text;
-                VatsimCID = Convert.ToInt32(vatsimCIDTextBox.Text);
+                IVAOVid = Convert.ToInt32(ivaoVIDTextBox.Text);
                 Remember = rememberCheckBox.Checked;
 
                 this.DialogResult = DialogResult.OK;
@@ -94,12 +94,12 @@ namespace EasyCPDLC
         {
             try
             {
-                if (vatsimCIDTextBox.Text.Length < 1 || hoppieCodeTextBox.Text.Length < 1)
+                if (ivaoVIDTextBox.Text.Length < 1 || hoppieCodeTextBox.Text.Length < 1)
                 {
                     throw new FormatException();
                 }
 
-                Convert.ToInt32(vatsimCIDTextBox.Text);
+                Convert.ToInt32(ivaoVIDTextBox.Text);
                 connectButton.Enabled = true;
 
             }
@@ -109,16 +109,16 @@ namespace EasyCPDLC
             }
         }
 
-        private void VatsimCIDTextBox_TextChanged(object sender, EventArgs e)
+        private void IvaoVidTextBoxTextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (vatsimCIDTextBox.Text.Length < 1 || hoppieCodeTextBox.Text.Length < 1)
+                if (ivaoVIDTextBox.Text.Length < 1 || hoppieCodeTextBox.Text.Length < 1)
                 {
                     throw new FormatException();
                 }
 
-                Convert.ToInt32(vatsimCIDTextBox.Text);
+                Convert.ToInt32(ivaoVIDTextBox.Text);
                 connectButton.Enabled = true;
 
             }

@@ -52,7 +52,7 @@ namespace EasyCPDLC
         UITextBox fix3;
 
         private readonly MainForm MainForm;
-        private readonly Pilot userVATSIMData;
+        private readonly PilotData userIVAOData;
         private readonly Color controlBackColor;
         private readonly Color controlFrontColor;
 
@@ -103,7 +103,7 @@ namespace EasyCPDLC
                 NeedsLogon = true;
             }
 
-            userVATSIMData = parent.userVATSIMData;
+            userIVAOData = parent.userIVAOData;
             controlBackColor = parent.controlBackColor;
             controlFrontColor = parent.controlFrontColor;
             controlFontBold = new Font(MainForm.fonts.Families[1], 12.5F, FontStyle.Bold);
@@ -180,13 +180,13 @@ namespace EasyCPDLC
             messageFormatPanel.Controls.Add(CreateTemplate("RECIPIENT:"), 1, 0);
             messageFormatPanel.Controls.Add(CreateTextBox("", 4), 2, 0);
             messageFormatPanel.Controls.Add(CreateTemplate("CALLSIGN: "), 1, 1);
-            messageFormatPanel.Controls.Add(CreateTextBox(userVATSIMData.callsign, 7), 2, 1);
+            messageFormatPanel.Controls.Add(CreateTextBox(userIVAOData.callsign, 7), 2, 1);
             messageFormatPanel.Controls.Add(CreateTemplate("A/C TYPE: "), 3, 1);
-            messageFormatPanel.Controls.Add(CreateTextBox(userVATSIMData.flight_plan.aircraft_short, 4), 4, 1);
+            messageFormatPanel.Controls.Add(CreateTextBox(userIVAOData.flightPlan.aircraftId, 6), 4, 1);
             messageFormatPanel.Controls.Add(CreateTemplate("DEP ARPT: "), 1, 2);
-            messageFormatPanel.Controls.Add(CreateTextBox(userVATSIMData.flight_plan.departure, 4), 2, 2);
+            messageFormatPanel.Controls.Add(CreateTextBox(userIVAOData.flightPlan.departureId, 4), 2, 2);
             messageFormatPanel.Controls.Add(CreateTemplate("ARR ARPT: "), 3, 2);
-            messageFormatPanel.Controls.Add(CreateTextBox(userVATSIMData.flight_plan.arrival, 4), 4, 2);
+            messageFormatPanel.Controls.Add(CreateTextBox(userIVAOData.flightPlan.arrivalId, 4), 4, 2);
             messageFormatPanel.Controls.Add(CreateTemplate("STAND: "), 1, 3);
             messageFormatPanel.Controls.Add(CreateTextBox("", 4), 2, 3);
             messageFormatPanel.Controls.Add(CreateTemplate("ATIS: "), 3, 3);
@@ -202,7 +202,7 @@ namespace EasyCPDLC
             messageFormatPanel.Controls.Add(CreateTemplate("RECIPIENT:"), 1, 0);
             messageFormatPanel.Controls.Add(CreateTextBox("", 4), 2, 0);
             messageFormatPanel.Controls.Add(CreateTemplate("CALLSIGN: "), 1, 1);
-            messageFormatPanel.Controls.Add(CreateTextBox(userVATSIMData.callsign, 7), 2, 1);
+            messageFormatPanel.Controls.Add(CreateTextBox(userIVAOData.callsign, 7), 2, 1);
             messageFormatPanel.Controls.Add(CreateTemplate("ENTRY PT: "), 3, 1);
             messageFormatPanel.Controls.Add(CreateTextBox("", 7), 4, 1);
             messageFormatPanel.Controls.Add(CreateTemplate("ETA: "), 1, 2);
@@ -311,7 +311,7 @@ namespace EasyCPDLC
             messageFormatPanel.Controls.Add(CreateTemplate("AT: "), 1, 2);
             messageFormatPanel.Controls.Add(CreateTextBox(DateTime.UtcNow.ToString("HHmm"), 4), 2, 2);
             messageFormatPanel.Controls.Add(CreateTemplate("FL: "), 3, 2);
-            messageFormatPanel.Controls.Add(CreateTextBox(MainForm.UseFSUIPC ? (Math.Round(MainForm.fsuipc.altitude.Feet / 1000) * 10).ToString() : userVATSIMData.flight_plan.altitude[..3], 3), 4, 2);
+            messageFormatPanel.Controls.Add(CreateTextBox(MainForm.UseFSUIPC ? (Math.Round(MainForm.fsuipc.altitude.Feet / 1000) * 10).ToString() : userIVAOData.flightPlan.level[..3], 3), 4, 2);
             messageFormatPanel.Controls.Add(CreateTemplate("NEXT: "), 1, 3);
             messageFormatPanel.Controls.Add(fix2, 2, 3);
             messageFormatPanel.Controls.Add(CreateTemplate("AT: "), 3 , 3);

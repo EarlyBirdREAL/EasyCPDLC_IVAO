@@ -52,8 +52,8 @@ namespace EasyCPDLC
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-        public Pilot userVATSIMData;
-        private VATSIMRootobject vatsimData;
+        public PilotData userIVAOData;
+        private IVAOJSON ivaoData;
         private Navlog simbriefData;
         public string[] reportFixes;
         public string nextFix = null;
@@ -118,11 +118,11 @@ namespace EasyCPDLC
         {
             get
             {
-                return Properties.Settings.Default.CID;
+                return Properties.Settings.Default.VID;
             }
             set
             {
-                Properties.Settings.Default.CID = value;
+                Properties.Settings.Default.VID = value;
 
             }
         }
@@ -515,7 +515,7 @@ namespace EasyCPDLC
             if (dataEntry.ShowDialog(this) == DialogResult.OK)
             {
                 logonCode = dataEntry.HoppieLogonCode;
-                cid = dataEntry.VatsimCID;
+                cid = dataEntry.IVAOVid;
                 if (dataEntry.Remember)
                 {
                     Logger.Info("REMEMBER ME: TRUE. REGISTRY SET.");
@@ -1107,30 +1107,37 @@ namespace EasyCPDLC
                 {
                     using (HttpClient wc = new())
                     {
-                        vatsimData = JsonConvert.DeserializeObject<VATSIMRootobject>(wc.GetStringAsync("https://data.vatsim.net/v3/vatsim-data.json").Result);
-                        Logger.Debug("VATSIM Data Retrieved and Parsed");
+                        ivaoData = JsonConvert.DeserializeObject<IVAOJSON>(wc.GetStringAsync("https://api.ivao.aero/v2/tracker/whazzup").Result);
+                        Logger.Debug("IVAO Data Retrieved and Parsed");
 
                     }
 
-                    userVATSIMData = vatsimData.pilots.Where(i => i.cid == cid).FirstOrDefault();
-                    if(userVATSIMData is null)
+                    userIVAOData = ivaoData.clients.pilots.FirstOrDefault(i => i.userId == cid);
+                    if(userIVAOData is null)
                     {
                         throw new IndexOutOfRangeException();
                     }
 
-                    string _fpTest = userVATSIMData.flight_plan.altitude;
-                    callsign = userVATSIMData.callsign;
+                    if (userIVAOData.flightPlan == null)
+                    {
+                        response += "NO FLIGHTPLAN FILED, PLEASE FIRST FILE A FLIGHT PLAN\n";
+                        atcButton.Enabled = false;
+                        telexButton.Enabled = false;
+                        Connected = false;
+                        WriteMessage(response, "SYSTEM", "SYSTEM");
+                        return;
+                    }
+                    callsign = userIVAOData.callsign;
 
                     Connected = true;
 
                     requestCancellationTokenSource = new CancellationTokenSource();
                     requestCancellationToken = requestCancellationTokenSource.Token;
                     _ = PeriodicCheckMessage(updateTimer, requestCancellationToken);                
-
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    response += "VATSIM: ERROR. WAIT 60 SECONDS AND RETRY.\n";
+                    response += "IVAO: ERROR. WAIT 60 SECONDS AND RETRY.\n";
                     atcButton.Enabled = false;
                     telexButton.Enabled = false;
                     Connected = false;
@@ -1138,9 +1145,9 @@ namespace EasyCPDLC
                     return;
                 }
 
-                catch (NullReferenceException)
+                catch (NullReferenceException error)
                 {
-                    response += "FLIGHT PLAN: ERROR. WAIT 60 SECONDS AND RETRY.\n";
+                    response += error + ".\n";
                     atcButton.Enabled = false;
                     telexButton.Enabled = false;
                     Connected = false;
@@ -1166,6 +1173,7 @@ namespace EasyCPDLC
 
                 catch
                 {
+                    response += "SIMBRIEF ERROR,";
                     response += "SIMBRIEF ERROR,";
                 }
 
@@ -1204,8 +1212,8 @@ namespace EasyCPDLC
                 requestCancellationTokenSource.Cancel();
                 callsign = "";
                 response = "DISCONNECTED CLIENT";
-                vatsimData = new VATSIMRootobject();
-                userVATSIMData = new Pilot();
+                ivaoData = new IVAOJSON();
+                userIVAOData = new PilotData();
                 simbriefData = new Navlog();
                 fsConnectionOpen = FSUIPCData.CloseConnection();
 
