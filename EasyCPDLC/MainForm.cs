@@ -337,7 +337,7 @@ namespace EasyCPDLC
                 var client = new GitHubClient(new ProductHeaderValue("EasyCPDLC_IVAO"));
                 var releases = await client.Repository.Release.GetAll("EarlyBirdREAL", "EasyCPDLC_IVAO");
                 var latest = releases[0];
-                string latestVersion = latest.TagName.Replace("cpdlc", "");
+                string latestVersion = latest.TagName.Replace("aesycpdlc_ivao", "");
                 if (latestVersion != System.Windows.Forms.Application.ProductVersion)
                 {
                     DialogResult updateBox = MessageBox.Show(String.Format("New Version {0} Available to download from Github. Would you like me to take you to the Github page for the latest release?", latestVersion), "New Version Available", MessageBoxButtons.YesNo);
