@@ -20,9 +20,11 @@
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FSUIPC;
+using Newtonsoft.Json;
 
 namespace EasyCPDLC
 {
@@ -48,6 +50,9 @@ namespace EasyCPDLC
         private readonly Font textFont;
         private readonly Font textFontBold;
         private readonly string recipient;
+        private IVAOJSON ivaoData;
+        private string response;
+        
         public TelexForm(MainForm _parent, string _recipient = null)
         {
             InitializeComponent();
@@ -188,11 +193,12 @@ namespace EasyCPDLC
             c.Parent = null;
         }
 
-        private void SendButton_Click(object sender, EventArgs e)
+        private async void SendButton_Click(object sender, EventArgs e)
         {
             RadioButton radioBtn = radioContainer.Controls.OfType<RadioButton>()
                                        .Where(x => x.Checked).FirstOrDefault();
 
+            
             if (radioBtn != null || messageFormatPanel.Controls[1].Text.Length < 4)
             {
 
@@ -208,14 +214,39 @@ namespace EasyCPDLC
                     case "metarRadioButton":
                         this.parent.WriteMessage("METAR REQUEST", "METAR", _recipient, true);
                         this.parent.ArtificialDelay("METAR " + _recipient, "INFOREQ", "REQUEST");
-
                         break;
 
                     case "atisRadioButton":
 
                         this.parent.WriteMessage("ATIS REQUEST", "ATIS", _recipient, true);
-                        this.parent.ArtificialDelay("VATATIS " + _recipient, "INFOREQ", "REQUEST");
+                        try
+                        {
+                            using (HttpClient wc = new())
+                            {
+                                ivaoData = JsonConvert.DeserializeObject<IVAOJSON>(
+                                    wc.GetStringAsync("https://api.ivao.aero/v2/tracker/whazzup").Result);
+                                var atc =
+                                    ivaoData.clients.atcs.FirstOrDefault(i => i.callsign.StartsWith(_recipient));
+                                if (atc is null)
+                                {
+                                    parent.WriteMessage("No ATIS found for station: " + _recipient, "SYSTEM", "SYSTEM");
+                                    return;
+                                }
 
+                                foreach (var atisLine in atc.atis.lines)
+                                {
+                                    response += atisLine;
+                                }
+                                parent.AtisMessage(response, _recipient);
+
+                            }
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+                            var response = "IVAO: ERROR. WAIT 60 SECONDS AND RETRY.\n";
+                            parent.WriteMessage(response, "SYSTEM", "SYSTEM");
+                            return;
+                        }
                         break;
 
                     default:

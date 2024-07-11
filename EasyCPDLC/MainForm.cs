@@ -315,7 +315,7 @@ namespace EasyCPDLC
             outputTable.VerticalScroll.Visible = false;
             outputTable.AutoScroll = true;
 
-            CheckNewVersion();
+            //CheckNewVersion();
             //CheckAdministrator();
             InitialisePopupMenu();
             ShowSetupForm();
@@ -1074,6 +1074,12 @@ namespace EasyCPDLC
             await Task.Delay(random.Next(_minDelay, _maxDelay) * 1000);
             await SendCPDLCMessage(_sender, _type, _message, false);
             return;
+        }
+
+        public async void AtisMessage(string _response, string _recipient)
+        {
+            await Task.Delay(random.Next(5, 15) * 1000);
+            WriteMessage(_response, "ATIS", _recipient);
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {
