@@ -8,6 +8,9 @@ It is based on [EasyCPDLC by Joshua Seagrave](https://github.com/quassbutreally/
 # How does it work?
 The program requires only your IVAO VID and Hoppie logon code. It uses this information to query the network and confirm your flight details, which it then stores and prefills into the relevant sections. From there, you can proceed to logon to a CPDLC unit, request a datalink clearance, or pursue any of the hundreds of other uses of CPDLC
 
+# What simulators are Supported?
+MSFS, X-Plane & P3D are fully supported granted you have FSUIPC/XUIPC installed.
+
 # Is there a tutorial?
 It's in development. But it is pretty straight forward.
 
