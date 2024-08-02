@@ -879,7 +879,8 @@ namespace EasyCPDLC
                 {
                     messageFormatPanel.Controls.Add(_response);
                 }
-                if (_sender.type != "CPDLC")
+
+                if (_sender.acknowledged || _sender.type != "CPDLC")
                 {
                     messageFormatPanel.Controls.Add(deleteLabel);
                 }

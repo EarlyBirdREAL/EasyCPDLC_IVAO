@@ -203,7 +203,7 @@
     // 
     titleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
     titleLabel.AutoSize = true;
-    titleLabel.Font = new System.Drawing.Font("Oxygen", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+    titleLabel.Font = new System.Drawing.Font("Oxygen", 22.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
     titleLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
     titleLabel.Location = new System.Drawing.Point(385, 12);
     titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
